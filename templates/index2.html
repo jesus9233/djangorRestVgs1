@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VGS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <form method="POST" action="/index/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Redact data</button>
+    </form>
+
+    <h1>Redacted data: {{ message }}</h1>
+
+    <form method="GET" action="/ccGet">
+        <input placeholder="alias here" type="text" name="message">
+        <button type="submit" id="submitReveal">Reveal data</button>
+    </form>
+
+    <h1>Revealed data:</h1>
+    <div>{{ response.data }}</div>
+
+</body>
+</html>
